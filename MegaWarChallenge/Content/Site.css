@@ -1,0 +1,40 @@
+﻿.columnEdge{
+    width:20%;
+    min-width:100px;
+    display: inline-block;
+    overflow:hidden;
+}
+
+.columnCenter{
+    width:60%;
+    display:inline-block;
+}
+
+.fixed-height{
+    height:250px;
+    overflow:hidden;
+}
+
+#battleground{
+    
+    height:45%;
+    width:100%;
+    overflow:auto;
+    /*margin:5px;*/
+    border:thick;
+    display:block;
+}
+
+
+#GameArea{
+    width:900px;
+    height:900px;
+    margin-top:10px;
+    margin-bottom:auto;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+#player2deckImage{
+    max-width:90%;
+}

@@ -14,14 +14,45 @@ namespace MegaWarChallenge
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            List<Card> deck = GetCards();
+            PlayWar();
+        }
+
+        public void PlayWar()
+        {
+            GameOfWar game = new GameOfWar();
+            Random random = new Random();
+            var deck = game.Deck;
+            deck.Shuffle(random);
+            var Player1 = game.Player1;
+            var Player2 = game.Player2;
+            deck.Deal(Player1, Player2);
+            DrawBoard(game);
+
+            PrintPlayerCards(Player1, Player2);
+
+        }
+
+        private void DrawBoard(GameOfWar game)
+        {
+            player2deckImage.ImageUrl = "Cards//playingCardBack.jpg";
+           
+        }
+
+        private void PrintPlayerCards(Player Player1, Player Player2)
+        {
             StringBuilder sb = new StringBuilder();
-            foreach (var card in deck)
+            sb.Append("Player 1 Cards: <br />");
+            foreach (var card in Player1.hand)
             {
-                sb.Append(card.name);
-                sb.Append(" " + card.value.ToString());
-                sb.Append("<br />");
+                sb.Append(card.name + "<br />");
             }
+            sb.Append("<br /> <br />");
+            sb.Append("Player 2 Cards: <br />");
+            foreach (var card in Player2.hand)
+            {
+                sb.Append(card.name + "<br />");
+            }
+
             unshuffledLabel.Text = sb.ToString();
         }
 
@@ -69,28 +100,51 @@ namespace MegaWarChallenge
 
                         }
                     }
-
-                    int nameIndexFrom = path.LastIndexOf("\\") + 1;
-                    //tmpCards[i].name = (path.Substring(nameIndexFrom, ) + " of " + tmpCards[i].suit).ToUpper();
-
-                    //create new substring beginning after full path. Then substring that into name.
-                    //OR do that in the first place and split it into a name?
-
                     i++;
                 }
             }
             return tmpCards;
         }
+ 
+    }
 
-        protected static void Shuffle(this List<Card> deck)
+    public static class ExtensionMethods
+    {
+        public static List<Card> Shuffle(this List<Card> deck, Random random)
 
         {
             int i = deck.Count;
             while (i > 1)
             {
-                Card tmpCard = deck[i];
-
+                i--;
+                int k = random.Next(i + 1);
+                Card tmpcard = deck[k];
+                deck[k] = deck[i];
+                deck[i] = tmpcard;
             }
+            return deck;
+        }
+
+        public static void Deal(this List<Card> deck, Player player1, Player player2)
+        {
+            int i = 0;
+            int counter = 1;
+            while (i < deck.Count)
+            {
+                switch (counter%2)
+                {
+                    case (1):
+                        player1.hand.Add(deck[i]);
+                        deck.RemoveAt(i);
+                        break;
+                    case (0):
+                        player2.hand.Add(deck[i]);
+                        deck.RemoveAt(i);
+                        break;
+                }
+                counter++;
+            }
+
         }
     }
 }

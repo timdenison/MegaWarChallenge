@@ -22,6 +22,15 @@ namespace MegaWarChallenge {
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
         
         /// <summary>
+        /// player2deckImage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image player2deckImage;
+        
+        /// <summary>
         /// unshuffledLabel control.
         /// </summary>
         /// <remarks>
@@ -31,12 +40,12 @@ namespace MegaWarChallenge {
         protected global::System.Web.UI.WebControls.Label unshuffledLabel;
         
         /// <summary>
-        /// shuffledLabel control.
+        /// Player1Hand control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label shuffledLabel;
+        protected global::System.Web.UI.WebControls.Image Player1Hand;
     }
 }

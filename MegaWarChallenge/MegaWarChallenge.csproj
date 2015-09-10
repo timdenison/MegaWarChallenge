@@ -66,6 +66,9 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Site.css" />
     <Content Include="packages.config" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -115,35 +118,21 @@
     <Content Include="Cards\ace_of_diamonds.png" />
     <Content Include="Cards\ace_of_hearts.png" />
     <Content Include="Cards\ace_of_spades.png" />
-    <Content Include="Cards\ace_of_spades2.png" />
-    <Content Include="Cards\black_joker.png" />
     <Content Include="Cards\jack_of_clubs.png" />
-    <Content Include="Cards\jack_of_clubs2.png" />
     <Content Include="Cards\jack_of_diamonds.png" />
-    <Content Include="Cards\jack_of_diamonds2.png" />
     <Content Include="Cards\jack_of_hearts.png" />
-    <Content Include="Cards\jack_of_hearts2.png" />
     <Content Include="Cards\jack_of_spades.png" />
-    <Content Include="Cards\jack_of_spades2.png" />
     <Content Include="Cards\king_of_clubs.png" />
-    <Content Include="Cards\king_of_clubs2.png" />
     <Content Include="Cards\king_of_diamonds.png" />
-    <Content Include="Cards\king_of_diamonds2.png" />
     <Content Include="Cards\king_of_hearts.png" />
-    <Content Include="Cards\king_of_hearts2.png" />
     <Content Include="Cards\king_of_spades.png" />
-    <Content Include="Cards\king_of_spades2.png" />
     <Content Include="Cards\queen_of_clubs.png" />
-    <Content Include="Cards\queen_of_clubs2.png" />
     <Content Include="Cards\queen_of_diamonds.png" />
-    <Content Include="Cards\queen_of_diamonds2.png" />
     <Content Include="Cards\queen_of_hearts.png" />
-    <Content Include="Cards\queen_of_hearts2.png" />
     <Content Include="Cards\queen_of_spades.png" />
-    <Content Include="Cards\queen_of_spades2.png" />
-    <Content Include="Cards\red_joker.png" />
     <Content Include="Default.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="Cards\playingCardBack.jpg" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -155,14 +144,17 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="GameOfWar.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="CardDeck.cs" />
+    <Compile Include="Player.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Assets\" />
     <Folder Include="Models\" />
   </ItemGroup>
   <PropertyGroup>
