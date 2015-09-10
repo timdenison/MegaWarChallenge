@@ -16,8 +16,8 @@
     <div id="Player2Area" class="row fixed-height">
     
         <div class="columnEdge"><asp:Image ID="player2deckImage" runat="server"/></div>
-        <div id="player2Info" class="columnCenter"></div>
-        <div id="spaceHolderRight" class="columnEdge"></div>
+        <div id="player2Info" class="columnCenter"><h1>Player 2 Info</h1></div>
+        <div id="spaceHolderRight" class="columnEdge">spaceholderright</div>
     
     </div>
 
@@ -26,9 +26,9 @@
     </div>
 
     <div id="Player1Area" class ="row fixed-height">
-        <div id="spaceHolderLeft" class ="columnEdge"></div>
+        <div id="spaceHolderLeft" class ="columnEdge">spaceholderleft</div>
         <div id="player1Info" class ="columnCenter"><h1>Player 1 Info</h1></div>
-        <div class="columnEdge"><asp:Image ID="Player1Hand" runat="server"  style="float:right;" Height="200px"/></div>
+        <div class="columnEdge"><asp:Image ID="player1deckImage" runat="server" /></div>
 
     </div>
 

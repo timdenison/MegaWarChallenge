@@ -35,6 +35,8 @@ namespace MegaWarChallenge
         private void DrawBoard(GameOfWar game)
         {
             player2deckImage.ImageUrl = "Cards//playingCardBack.jpg";
+            player1deckImage.ImageUrl = "Cards//playingCardBack.jpg";
+
            
         }
 

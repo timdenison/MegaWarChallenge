@@ -1,18 +1,27 @@
 ﻿.columnEdge{
-    width:20%;
+    width:19%;
     min-width:100px;
     display: inline-block;
     overflow:hidden;
+    text-align:center;
+    float:left
+}
+
+.columnEdge#player1deckImage{
+    float:right;
 }
 
 .columnCenter{
     width:60%;
     display:inline-block;
+    text-align:center;
+    float:left;
 }
 
 .fixed-height{
-    height:250px;
+    height:200px;
     overflow:hidden;
+    line-height:200px;
 }
 
 #battleground{
@@ -27,14 +36,25 @@
 
 
 #GameArea{
-    width:900px;
-    height:900px;
+    width:80%;
+    height:800px;
     margin-top:10px;
     margin-bottom:auto;
     margin-left:auto;
     margin-right:auto;
+    min-width:600px;
+}
+
+div{
+    border-color:black;
+    
+    border-style:solid;
 }
 
 #player2deckImage{
-    max-width:90%;
+    max-width:80%;
+}
+
+#player1deckImage{
+    max-width:80%;
 }

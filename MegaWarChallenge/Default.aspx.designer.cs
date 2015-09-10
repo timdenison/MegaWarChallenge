@@ -40,12 +40,12 @@ namespace MegaWarChallenge {
         protected global::System.Web.UI.WebControls.Label unshuffledLabel;
         
         /// <summary>
-        /// Player1Hand control.
+        /// player1deckImage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image Player1Hand;
+        protected global::System.Web.UI.WebControls.Image player1deckImage;
     }
 }
