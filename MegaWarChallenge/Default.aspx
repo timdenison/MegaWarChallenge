@@ -23,6 +23,7 @@
 
     <div id="battleground" class ="row">
     <asp:Label ID="unshuffledLabel" runat="server"></asp:Label>
+        <asp:Button ID="throwCardButton" runat="server" OnClick="throwCardButton_Click" Text="Throw Down!" />
     </div>
 
     <div id="Player1Area" class ="row fixed-height">
