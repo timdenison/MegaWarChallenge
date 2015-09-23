@@ -62,7 +62,7 @@ namespace MegaWarChallenge
 
             set { }
         }
-        public List<Card> WarPile { get; set; }
+        public List<Card> WarPile = new List<Card>();
         public Player Player1 { get { return new Player(); } set { } }
         public Player Player2 { get { return new Player(); } set { } }
         public string cardBackURI = Directory.GetFiles(HttpContext.Current.Server.MapPath("/Cards"), "*.jpg")[0].ToString();

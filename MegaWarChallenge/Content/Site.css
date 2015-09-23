@@ -26,11 +26,13 @@
 
 #battleground{
     
+    border-style: none;
+    border-color: inherit;
+    border-width: thick;
     height:45%;
-    width:100%;
+    width:102%;
     overflow:auto;
     /*margin:5px;*/
-    border:thick;
     display:block;
 }
 
@@ -57,4 +59,12 @@ div{
 
 #player1deckImage{
     max-width:80%;
+}
+
+.elbow-room{
+    padding-left:40px;
+    padding-right:40px;
+    display:inline-block;
+    float:left;
+    
 }

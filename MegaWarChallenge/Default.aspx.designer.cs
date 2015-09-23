@@ -49,6 +49,24 @@ namespace MegaWarChallenge {
         protected global::System.Web.UI.WebControls.Button throwCardButton;
         
         /// <summary>
+        /// warButton control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button warButton;
+        
+        /// <summary>
+        /// resultsLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label resultsLabel;
+        
+        /// <summary>
         /// player1deckImage control.
         /// </summary>
         /// <remarks>

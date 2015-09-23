@@ -21,9 +21,11 @@
     
     </div>
 
-    <div id="battleground" class ="row">
-    <asp:Label ID="unshuffledLabel" runat="server"></asp:Label>
-        <asp:Button ID="throwCardButton" runat="server" OnClick="throwCardButton_Click" Text="Throw Down!" />
+    <div id="battleground" class ="row" style="text-align:center">
+    <asp:Label ID="unshuffledLabel" runat="server" CssClass="elbow-room"></asp:Label>
+        <asp:Button ID="throwCardButton" runat="server" OnClick="throwCardButton_Click" Text="Throw Down!" CssClass="elbow-room"/>
+        <asp:Button ID="warButton" runat="server" Text="Auto-Play" CssClass="elbow-room" OnClick="warButton_Click" />
+        <asp:Label ID="resultsLabel" runat="server" CssClass="elbow-room"></asp:Label>
     </div>
 
     <div id="Player1Area" class ="row fixed-height">

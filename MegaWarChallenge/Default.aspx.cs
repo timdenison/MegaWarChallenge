@@ -17,9 +17,11 @@ namespace MegaWarChallenge
         List<Card> warPile = game.WarPile;
         Player Player1 = game.Player1;
         Player Player2 = game.Player2;
+        
         protected void Page_Load(object sender, EventArgs e)
         {
-            PlayWar();
+            if (!Page.IsPostBack) { PlayWar(); }
+            
         }
 
         public void PlayWar()
@@ -30,6 +32,8 @@ namespace MegaWarChallenge
             deck.Shuffle(random);
             
             deck.Deal(Player1, Player2);
+            Session.Add("Player1", Player1);
+            Session.Add("Player2", Player2);
             DrawBoard(game);
 
             PrintPlayerCards(Player1, Player2);
@@ -114,20 +118,33 @@ namespace MegaWarChallenge
 
         protected void throwCardButton_Click(object sender, EventArgs e)
         {
-            //warPile.Add(Player1.hand[0]);
-            //deck.RemoveAt(0);
-            //warPile.Add(Player2.hand[0]);
-            //deck.RemoveAt(0);
+            PlayRound();
+
+        }
+
+        private void PlayRound()
+        {
+            //sort out why cards are disappearing
+            var Player1 = (Player)Session["Player1"];
+            var Player2 = (Player)Session["Player2"];
             Player1.ThrowCard(warPile);
             Player2.ThrowCard(warPile);
+            Compare(warPile);
+        }
 
+        private void Compare(List<Card> warPile)
+        {
             if (warPile[0].value > warPile[1].value)
             {
+                PrintRoundResults(Player1, warPile);
                 Player1.Wins(warPile);
+                
             }
             else if (warPile[0].value < warPile[1].value)
             {
+                PrintRoundResults(Player2, warPile);
                 Player2.Wins(warPile);
+                
             }
             else
             {
@@ -135,16 +152,39 @@ namespace MegaWarChallenge
             }
         }
 
-        public void War()
+        private void PrintRoundResults(Player player, List<Card> warPile)
         {
-            int counter = 3;
-            while (counter > 0)
+            resultsLabel.Text += player.name + "wins <br />";
+            foreach (var card in warPile)
             {
-                warPile.Add(Player1.hand[0]);
-                Player1.hand.RemoveAt(0);
+                resultsLabel.Text += "   " + card.name + "<br />";
             }
         }
 
+        public void War()
+        { //test war code. Show cards. Create Auto Play loop
+            int counter = 2;
+            bool facedown = true;
+            while (counter > 0)
+            {
+                Player1.ThrowCard(warPile, facedown);
+                Player2.ThrowCard(warPile, facedown);
+                facedown = !facedown;
+                
+            }
+            Compare(warPile);
+        }
+
+        protected void warButton_Click(object sender, EventArgs e)
+        {
+            while (Player1.hand.Count > 0 && Player2.hand.Count > 0)
+            {
+                PlayRound();
+            }
+
+        }
+
+       
     }
 
     public static class ExtensionMethods
@@ -191,12 +231,21 @@ namespace MegaWarChallenge
             {
                 player.hand.Add(card);
             }
+            winPile.Clear();
         }
 
         public static void ThrowCard(this Player player, List<Card> warPile)
         {
             warPile.Add(player.hand[0]);
             player.hand.RemoveAt(0);
+            //show card faceup on table?
+        }
+
+        public static void ThrowCard(this Player player, List<Card> warPile, bool facedown)
+        {
+            warPile.Add(player.hand[0]);
+            player.hand.RemoveAt(0);
+            //show card facedown on table.
         }
     }
 }
