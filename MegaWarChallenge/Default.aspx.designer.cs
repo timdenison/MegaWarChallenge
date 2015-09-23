@@ -49,13 +49,21 @@ namespace MegaWarChallenge {
         protected global::System.Web.UI.WebControls.Label unshuffledLabel;
         
         /// <summary>
+<<<<<<< HEAD
         /// p1cardCountLabel control.
+=======
+        /// throwCardButton control.
+>>>>>>> origin/master
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
+<<<<<<< HEAD
         protected global::System.Web.UI.WebControls.Label p1cardCountLabel;
+=======
+        protected global::System.Web.UI.WebControls.Button throwCardButton;
+>>>>>>> origin/master
         
         /// <summary>
         /// player1deckImage control.

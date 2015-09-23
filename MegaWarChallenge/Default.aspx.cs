@@ -12,6 +12,11 @@ namespace MegaWarChallenge
 {
     public partial class Default : System.Web.UI.Page
     {
+        public static GameOfWar game = new GameOfWar();
+        List<Card> deck = game.Deck;
+        List<Card> warPile = game.WarPile;
+        Player Player1 = game.Player1;
+        Player Player2 = game.Player2;
         protected void Page_Load(object sender, EventArgs e)
         {
             PlayWar();
@@ -19,12 +24,11 @@ namespace MegaWarChallenge
 
         public void PlayWar()
         {
-            GameOfWar game = new GameOfWar();
+            
             Random random = new Random();
-            var deck = game.Deck;
+            
             deck.Shuffle(random);
-            var Player1 = game.Player1;
-            var Player2 = game.Player2;
+            
             deck.Deal(Player1, Player2);
             DrawBoard(game);
 
@@ -107,7 +111,40 @@ namespace MegaWarChallenge
             }
             return tmpCards;
         }
- 
+
+        protected void throwCardButton_Click(object sender, EventArgs e)
+        {
+            //warPile.Add(Player1.hand[0]);
+            //deck.RemoveAt(0);
+            //warPile.Add(Player2.hand[0]);
+            //deck.RemoveAt(0);
+            Player1.ThrowCard(warPile);
+            Player2.ThrowCard(warPile);
+
+            if (warPile[0].value > warPile[1].value)
+            {
+                Player1.Wins(warPile);
+            }
+            else if (warPile[0].value < warPile[1].value)
+            {
+                Player2.Wins(warPile);
+            }
+            else
+            {
+                War();
+            }
+        }
+
+        public void War()
+        {
+            int counter = 3;
+            while (counter > 0)
+            {
+                warPile.Add(Player1.hand[0]);
+                Player1.hand.RemoveAt(0);
+            }
+        }
+
     }
 
     public static class ExtensionMethods
@@ -147,6 +184,19 @@ namespace MegaWarChallenge
                 counter++;
             }
 
+        }
+        public static void Wins(this Player player, List<Card> winPile)
+        {
+            foreach (var card in winPile)
+            {
+                player.hand.Add(card);
+            }
+        }
+
+        public static void ThrowCard(this Player player, List<Card> warPile)
+        {
+            warPile.Add(player.hand[0]);
+            player.hand.RemoveAt(0);
         }
     }
 }
