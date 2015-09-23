@@ -16,10 +16,11 @@
     display:inline-block;
     text-align:center;
     float:left;
+    line-height:100px;
 }
 
 .fixed-height{
-    height:200px;
+    min-height:200px;
     overflow:hidden;
     line-height:200px;
 }
@@ -52,9 +53,19 @@ div{
 }
 
 #player2deckImage{
-    max-width:80%;
+    max-width:60%;
 }
 
 #player1deckImage{
-    max-width:80%;
+    max-width:60%;
+   
+}
+
+.cardCount{
+    font-size:2em;
+    font-weight:bold;
+}
+
+#welcomePopUp{
+    display:none;
 }
