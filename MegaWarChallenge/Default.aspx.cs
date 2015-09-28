@@ -124,26 +124,25 @@ namespace MegaWarChallenge
 
         private void PlayRound()
         {
-            //sort out why cards are disappearing
             var Player1 = (Player)Session["Player1"];
             var Player2 = (Player)Session["Player2"];
             Player1.ThrowCard(warPile);
             Player2.ThrowCard(warPile);
-            Compare(warPile);
+            Compare(warPile, Player1, Player2);
         }
 
-        private void Compare(List<Card> warPile)
+        private void Compare(List<Card> warPile, Player player1, Player player2)
         {
             if (warPile[0].value > warPile[1].value)
             {
-                PrintRoundResults(Player1, warPile);
-                Player1.Wins(warPile);
+                PrintRoundResults(player1, warPile);
+                player1.Wins(warPile);
                 
             }
             else if (warPile[0].value < warPile[1].value)
             {
-                PrintRoundResults(Player2, warPile);
-                Player2.Wins(warPile);
+                PrintRoundResults(player2, warPile);
+                player2.Wins(warPile);
                 
             }
             else
@@ -159,6 +158,8 @@ namespace MegaWarChallenge
             {
                 resultsLabel.Text += "   " + card.name + "<br />";
             }
+            var winnerCardCount = player.hand.Count + warPile.Count;
+            resultsLabel.Text += "Card count (" + player.name + "): " + winnerCardCount + "<br />";
         }
 
         public void War()
@@ -172,11 +173,13 @@ namespace MegaWarChallenge
                 facedown = !facedown;
                 
             }
-            Compare(warPile);
+            Compare(warPile, Player1, Player2);
         }
 
         protected void warButton_Click(object sender, EventArgs e)
         {
+            //Player1 and //Player2 are currently empty. Is there a solution that doens't involve
+            //me passing them in every single time?
             while (Player1.hand.Count > 0 && Player2.hand.Count > 0)
             {
                 PlayRound();
