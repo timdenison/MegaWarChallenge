@@ -133,13 +133,15 @@ namespace MegaWarChallenge
 
         private void Compare(List<Card> warPile, Player player1, Player player2)
         {
-            if (warPile[0].value > warPile[1].value)
+            var p1Compare = warPile[warPile.Count - 2].value;
+            var p2Compare = warPile[warPile.Count - 1].value;
+            if (p1Compare > p2Compare)
             {
                 PrintRoundResults(player1, warPile);
                 player1.Wins(warPile);
                 
             }
-            else if (warPile[0].value < warPile[1].value)
+            else if (p1Compare < p2Compare)
             {
                 PrintRoundResults(player2, warPile);
                 player2.Wins(warPile);
@@ -147,7 +149,13 @@ namespace MegaWarChallenge
             }
             else
             {
-                War();
+                //well crap. handle end of game situtations
+                if (War(player1, player2) != String.Empty())
+                    {
+                    resultsLabel.Text += 
+                }
+                
+                
             }
         }
 
@@ -162,24 +170,25 @@ namespace MegaWarChallenge
             resultsLabel.Text += "Card count (" + player.name + "): " + winnerCardCount + "<br />";
         }
 
-        public void War()
+        public void War(Player player1, Player player2)
         { //test war code. Show cards. Create Auto Play loop
             int counter = 2;
             bool facedown = true;
             while (counter > 0)
             {
-                Player1.ThrowCard(warPile, facedown);
-                Player2.ThrowCard(warPile, facedown);
+                player1.ThrowCard(warPile, facedown);
+                player2.ThrowCard(warPile, facedown);
                 facedown = !facedown;
+                counter --;
                 
             }
-            Compare(warPile, Player1, Player2);
+            Compare(warPile, player1, player2);
         }
 
         protected void warButton_Click(object sender, EventArgs e)
         {
-            //Player1 and //Player2 are currently empty. Is there a solution that doens't involve
-            //me passing them in every single time?
+            Player1 = (Player)Session["Player1"];
+            Player2 = (Player)Session["Player2"];
             while (Player1.hand.Count > 0 && Player2.hand.Count > 0)
             {
                 PlayRound();
@@ -237,17 +246,30 @@ namespace MegaWarChallenge
             winPile.Clear();
         }
 
-        public static void ThrowCard(this Player player, List<Card> warPile)
+        public static string ThrowCard(this Player player, List<Card> warPile)
         {
+            var loser = "";
             warPile.Add(player.hand[0]);
             player.hand.RemoveAt(0);
             //show card faceup on table?
+            return loser;
         }
 
-        public static void ThrowCard(this Player player, List<Card> warPile, bool facedown)
+        public static string ThrowCard(this Player player, List<Card> warPile, bool facedown)
         {
-            warPile.Add(player.hand[0]);
-            player.hand.RemoveAt(0);
+            var loser = "";
+            try {
+
+                warPile.Add(player.hand[0]);
+                player.hand.RemoveAt(0);
+                return loser;
+
+            }
+            catch {
+                loser = player.name;
+                return loser;
+            }
+            
             //show card facedown on table.
         }
     }
