@@ -126,9 +126,15 @@ namespace MegaWarChallenge
         {
             var Player1 = (Player)Session["Player1"];
             var Player2 = (Player)Session["Player2"];
-            Player1.ThrowCard(warPile);
-            Player2.ThrowCard(warPile);
-            Compare(warPile, Player1, Player2);
+            try {
+                Player1.ThrowCard(warPile);
+                Player2.ThrowCard(warPile);
+                Compare(warPile, Player1, Player2);
+            }
+            catch
+            {
+                GameOver();
+            }
         }
 
         private void Compare(List<Card> warPile, Player player1, Player player2)
@@ -149,13 +155,7 @@ namespace MegaWarChallenge
             }
             else
             {
-                //well crap. handle end of game situtations
-                if (War(player1, player2) != String.Empty())
-                    {
-                    resultsLabel.Text += 
-                }
-                
-                
+                War(player1, player2);  
             }
         }
 
@@ -176,11 +176,18 @@ namespace MegaWarChallenge
             bool facedown = true;
             while (counter > 0)
             {
-                player1.ThrowCard(warPile, facedown);
-                player2.ThrowCard(warPile, facedown);
-                facedown = !facedown;
-                counter --;
-                
+                try {
+                    player1.ThrowCard(warPile, facedown);
+                    player2.ThrowCard(warPile, facedown);
+                    facedown = !facedown;
+                    counter--;
+                }
+                catch
+                {
+                    //investigate loop behavior
+                    GameOver();
+                }
+
             }
             Compare(warPile, player1, player2);
         }
@@ -192,11 +199,16 @@ namespace MegaWarChallenge
             while (Player1.hand.Count > 0 && Player2.hand.Count > 0)
             {
                 PlayRound();
+                //Response.Redirect("Default.aspx");
             }
 
         }
+        public void GameOver()
+        {
+            resultsLabel.Text = "Testing Game Over";
+        }
 
-       
+
     }
 
     public static class ExtensionMethods
@@ -246,31 +258,21 @@ namespace MegaWarChallenge
             winPile.Clear();
         }
 
-        public static string ThrowCard(this Player player, List<Card> warPile)
+        public static void ThrowCard(this Player player, List<Card> warPile)
         {
-            var loser = "";
-            warPile.Add(player.hand[0]);
-            player.hand.RemoveAt(0);
-            //show card faceup on table?
-            return loser;
-        }
-
-        public static string ThrowCard(this Player player, List<Card> warPile, bool facedown)
-        {
-            var loser = "";
-            try {
-
                 warPile.Add(player.hand[0]);
                 player.hand.RemoveAt(0);
-                return loser;
+                //show card faceup on table?
+          
+        }
 
-            }
-            catch {
-                loser = player.name;
-                return loser;
-            }
-            
+        public static void ThrowCard(this Player player, List<Card> warPile, bool facedown)
+        {
+            warPile.Add(player.hand[0]);
+            player.hand.RemoveAt(0);
+
             //show card facedown on table.
         }
+        
     }
 }
