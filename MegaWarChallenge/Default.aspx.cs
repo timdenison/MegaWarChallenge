@@ -36,7 +36,7 @@ namespace MegaWarChallenge
             Session.Add("Player2", Player2);
             DrawBoard(game);
 
-            PrintPlayerCards(Player1, Player2);
+            //PrintPlayerCards(Player1, Player2);
 
         }
 
@@ -44,6 +44,9 @@ namespace MegaWarChallenge
         {
             player2deckImage.ImageUrl = "Cards//playingCardBack.jpg";
             player1deckImage.ImageUrl = "Cards//playingCardBack.jpg";
+            p1cardCountLabel.Text = "26";
+            p2cardCountLabel.Text = "26";
+            
 
            
         }
@@ -122,19 +125,27 @@ namespace MegaWarChallenge
 
         }
 
-        private void PlayRound()
+        private bool PlayRound()
         {
+            bool gameOver = false;
             var Player1 = (Player)Session["Player1"];
             var Player2 = (Player)Session["Player2"];
             try {
                 Player1.ThrowCard(warPile);
                 Player2.ThrowCard(warPile);
+                p1MainCard.ImageUrl = warPile[0].relPath;
+                p2MainCard.ImageUrl = warPile[1].relPath;
                 Compare(warPile, Player1, Player2);
+                return gameOver;
             }
             catch
             {
-                GameOver();
+                GameOver(Player1, Player2);
+                gameOver = true;
+                return gameOver;
             }
+
+            
         }
 
         private void Compare(List<Card> warPile, Player player1, Player player2)
@@ -167,7 +178,19 @@ namespace MegaWarChallenge
                 resultsLabel.Text += "   " + card.name + "<br />";
             }
             var winnerCardCount = player.hand.Count + warPile.Count;
-            resultsLabel.Text += "Card count (" + player.name + "): " + winnerCardCount + "<br />";
+            //resultsLabel.Text += "Card count (" + player.name + "): " + winnerCardCount + "<br />";
+            if (player.name == "Player 1")
+            {
+                p1cardCountLabel.Text = winnerCardCount.ToString();
+                p2cardCountLabel.Text = (52 - winnerCardCount).ToString();
+            }
+            else
+            {
+                p2cardCountLabel.Text = winnerCardCount.ToString();
+                p1cardCountLabel.Text = (52 - winnerCardCount).ToString();
+            }
+
+            
         }
 
         public void War(Player player1, Player player2)
@@ -181,11 +204,12 @@ namespace MegaWarChallenge
                     player2.ThrowCard(warPile, facedown);
                     facedown = !facedown;
                     counter--;
+                    
                 }
                 catch
                 {
                     //investigate loop behavior
-                    GameOver();
+                    GameOver(player1, player2);
                 }
 
             }
@@ -196,19 +220,30 @@ namespace MegaWarChallenge
         {
             Player1 = (Player)Session["Player1"];
             Player2 = (Player)Session["Player2"];
-            while (Player1.hand.Count > 0 && Player2.hand.Count > 0)
+            int count = 1000;
+            bool gameOver = false;
+            while (count > 0 && !gameOver)
             {
-                PlayRound();
+                gameOver = PlayRound();
                 //Response.Redirect("Default.aspx");
+                count--;
             }
 
         }
-        public void GameOver()
+        public void GameOver(Player player1, Player player2)
         {
-            resultsLabel.Text = "Testing Game Over";
+           switch (player1.hand.Count())
+            {
+                case 0:
+                    resultsLabel.Text += "That's it. Player 1 is out of Cards. <br><br> Player 2 wins the Game of War";
+                    break;
+                default:
+                    resultsLabel.Text += "That's it. Player 2 is out of Cards. <br><br> Player 1 wins the Game of War";
+                    break;
+                    
+
+            }
         }
-
-
     }
 
     public static class ExtensionMethods
@@ -262,16 +297,13 @@ namespace MegaWarChallenge
         {
                 warPile.Add(player.hand[0]);
                 player.hand.RemoveAt(0);
-                //show card faceup on table?
-          
+
         }
 
         public static void ThrowCard(this Player player, List<Card> warPile, bool facedown)
         {
             warPile.Add(player.hand[0]);
             player.hand.RemoveAt(0);
-
-            //show card facedown on table.
         }
         
     }

@@ -49,17 +49,6 @@ namespace MegaWarChallenge {
         protected global::System.Web.UI.WebControls.Label unshuffledLabel;
         
         /// <summary>
-        /// p1cardCountLabel control.
-        /// throwCardButton control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label p1cardCountLabel;
-
-
-        /// <summary>.
         /// throwCardButton control.
         /// </summary>
         /// <remarks>
@@ -67,7 +56,7 @@ namespace MegaWarChallenge {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button throwCardButton;
-
+        
         /// <summary>
         /// warButton control.
         /// </summary>
@@ -85,6 +74,69 @@ namespace MegaWarChallenge {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label resultsLabel;
+        
+        /// <summary>
+        /// p2leftCard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image p2leftCard;
+        
+        /// <summary>
+        /// p2MainCard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image p2MainCard;
+        
+        /// <summary>
+        /// p2RightCard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image p2RightCard;
+        
+        /// <summary>
+        /// p1LeftCard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image p1LeftCard;
+        
+        /// <summary>
+        /// p1MainCard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image p1MainCard;
+        
+        /// <summary>
+        /// p1RightCard control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image p1RightCard;
+        
+        /// <summary>
+        /// p1cardCountLabel control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label p1cardCountLabel;
         
         /// <summary>
         /// player1deckImage control.

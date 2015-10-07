@@ -59,6 +59,15 @@
         <asp:Button ID="throwCardButton" runat="server" OnClick="throwCardButton_Click" Text="Throw Down!" CssClass="elbow-room"/>
         <asp:Button ID="warButton" runat="server" Text="Auto-Play" CssClass="elbow-room" OnClick="warButton_Click" />
         <asp:Label ID="resultsLabel" runat="server" CssClass="elbow-room"></asp:Label>
+        <br />
+        <br />
+        <asp:Image ID="p2leftCard" runat="server" Height="120px" Width="80px" />
+        <asp:Image ID="p2MainCard" runat="server" Height="120px" Width="80px" />
+        <asp:Image ID="p2RightCard" runat="server" Height="120px" Width="80px" />
+        <br />
+        <asp:Image ID="p1LeftCard" runat="server" Height="120px" Width="80px" />
+        <asp:Image ID="p1MainCard" runat="server" Height="120px" Width="80px" />
+        <asp:Image ID="p1RightCard" runat="server" Height="120px" Width="80px" />
     </div>
 
     <div id="Player1Area" class ="row fixed-height">
