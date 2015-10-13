@@ -56,8 +56,8 @@
 
     <div id="battleground" class ="row" style="text-align:center">
     <asp:Label ID="unshuffledLabel" runat="server" CssClass="elbow-room"></asp:Label>
-        <asp:Button ID="throwCardButton" runat="server" OnClick="throwCardButton_Click" Text="Throw Down!" CssClass="elbow-room"/>
-        <asp:Button ID="warButton" runat="server" Text="Auto-Play" CssClass="elbow-room" OnClick="warButton_Click" />
+       
+        <%--<asp:Button ID="warButton" runat="server" Text="Auto-Play" CssClass="elbow-room" OnClick="warButton_Click" />--%>
         <asp:Label ID="resultsLabel" runat="server" CssClass="elbow-room"></asp:Label>
         <br />
         <br />
@@ -74,7 +74,8 @@
         <div id="spaceHolderLeft" class ="columnEdge">spaceholderleft</div>
         <div id="player1Info" class ="columnCenter">
             <h1>Player 1 Info</h1>
-            <asp:Label ID="p1cardCountLabel" CssClass="cardCount" runat="server">Card count: </asp:Label>
+            <asp:Label ID="p1cardCountLabel" CssClass="cardCount" runat="server">Card count: </asp:Label><br />
+             <asp:Button ID="throwCardButton" runat="server" OnClick="throwCardButton_Click" Text="Throw Down!" CssClass="elbow-room"/>
         </div>
         <div class="columnEdge"><asp:Image ID="player1deckImage" runat="server" /></div>
 

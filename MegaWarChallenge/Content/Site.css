@@ -66,6 +66,7 @@ div{
 .cardCount{
     font-size:2em;
     font-weight:bold;
+    
 }
 
 #welcomePopUp{
@@ -75,7 +76,8 @@ div{
 .elbow-room{
     padding-left:40px;
     padding-right:40px;
-    display:inline-block;
-    float:left;
+    line-height: 22px;
+    /*display:inline-block;*/
+    /*float:left;*/
     
 }

@@ -172,11 +172,11 @@ namespace MegaWarChallenge
 
         private void PrintRoundResults(Player player, List<Card> warPile)
         {
-            resultsLabel.Text += player.name + "wins <br />";
-            foreach (var card in warPile)
-            {
-                resultsLabel.Text += "   " + card.name + "<br />";
-            }
+            resultsLabel.Text += player.name + " wins!";
+            //foreach (var card in warPile)
+            //{
+            //    resultsLabel.Text += "   " + card.name + "<br />";
+            //}
             var winnerCardCount = player.hand.Count + warPile.Count;
             //resultsLabel.Text += "Card count (" + player.name + "): " + winnerCardCount + "<br />";
             if (player.name == "Player 1")
