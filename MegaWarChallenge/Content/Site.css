@@ -1,10 +1,21 @@
-﻿.columnEdge{
+﻿body{
+    line-height:unset;
+}
+
+.columnEdge{
     width:19%;
-    min-width:100px;
+    min-width:40px;
+    
     display: inline-block;
     overflow:hidden;
     text-align:center;
     float:left
+}
+
+.tableCard{
+   
+    overflow:hidden;
+    max-width:120px;
 }
 
 .columnEdge#player1deckImage{
@@ -16,13 +27,12 @@
     display:inline-block;
     text-align:center;
     float:left;
-    line-height:100px;
+    
 }
 
 .fixed-height{
-    min-height:200px;
+    min-height:100px;
     overflow:hidden;
-    line-height:200px;
 }
 
 #battleground{
@@ -30,8 +40,7 @@
     border-style: none;
     border-color: inherit;
     border-width: thick;
-    height:45%;
-    width:102%;
+    max-height: 100%;
     overflow:auto;
     /*margin:5px;*/
     display:block;
@@ -40,32 +49,33 @@
 
 #GameArea{
     width:80%;
-    height:800px;
-    margin-top:10px;
+    height:100%;
+    /*margin-top:7px;*/
     margin-bottom:auto;
     margin-left:auto;
     margin-right:auto;
     min-width:600px;
 }
 
-div{
+div#GameArea{
     border-color:black;
     
     border-style:solid;
 }
 
 #player2deckImage{
-    max-width:60%;
+    max-width:50%;
 }
 
 #player1deckImage{
-    max-width:60%;
+    max-width:50%;
    
 }
 
 .cardCount{
     font-size:2em;
     font-weight:bold;
+
     
 }
 
@@ -80,4 +90,8 @@ div{
     /*display:inline-block;*/
     /*float:left;*/
     
+}
+
+#spaceHolderLeft{
+    min-width:
 }

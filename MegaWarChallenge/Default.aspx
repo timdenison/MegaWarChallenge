@@ -15,6 +15,10 @@
     <script type="text/javascript" src="//secure.gbcblue.com/common/fancybox/2.1.5/source/jquery.fancybox.js"></script>
     <script type="text/javascript" src="//secure.gbcblue.com/common/fancybox/2.1.5/source/jquery.fancybox.swipe.js"></script>
     <link rel="stylesheet" type="text/css" href="//secure.gbcblue.com/common/fancybox/2.1.5/source/jquery.fancybox.css" />
+    <script>
+
+        $('.tableCard').height = $('#player2deckImage').height(); //doesn't work
+    </script>
     
 
 </head>
@@ -36,7 +40,7 @@
     </script>
 <body>
     <form id="form1" runat="server">
-        <a id="welcomePopUplink" class="fancyboxLink" href="#welcomePopUp">Link</a>
+        <a id="welcomePopUplink" class="fancyboxLink" href="#welcomePopUp"></a>
 
     <div id="GameArea" class="container">
         <div id="welcomePopUp" style="display:none;">
@@ -50,28 +54,28 @@
             <asp:Label ID="p2cardCountLabel" CssClass="cardCount" runat="server">Card count: </asp:Label>
 
         </div>
-        <div id="spaceHolderRight" class="columnEdge">spaceholderright</div>
+        <div id="spaceHolderRight" class="columnEdge">&nbsp;</div>
     
     </div>
 
-    <div id="battleground" class ="row" style="text-align:center">
+    <div id="battleground" class ="row" style="text-align:center">&nbsp;
     <asp:Label ID="unshuffledLabel" runat="server" CssClass="elbow-room"></asp:Label>
        
         <%--<asp:Button ID="warButton" runat="server" Text="Auto-Play" CssClass="elbow-room" OnClick="warButton_Click" />--%>
         <asp:Label ID="resultsLabel" runat="server" CssClass="elbow-room"></asp:Label>
         <br />
         <br />
-        <asp:Image ID="p2leftCard" runat="server" Height="120px" Width="80px" />
-        <asp:Image ID="p2MainCard" runat="server" Height="120px" Width="80px" />
-        <asp:Image ID="p2RightCard" runat="server" Height="120px" Width="80px" />
+        <asp:Image ID="p2leftCard" runat="server" CssClass="tableCard" />
+        <asp:Image ID="p2MainCard" runat="server" CssClass="tableCard" />
+        <asp:Image ID="p2RightCard" runat="server" CssClass="tableCard"/>
         <br />
-        <asp:Image ID="p1LeftCard" runat="server" Height="120px" Width="80px" />
-        <asp:Image ID="p1MainCard" runat="server" Height="120px" Width="80px" />
-        <asp:Image ID="p1RightCard" runat="server" Height="120px" Width="80px" />
+        <asp:Image ID="p1LeftCard" runat="server" CssClass="tableCard"/>
+        <asp:Image ID="p1MainCard" runat="server" CssClass="tableCard"/>
+        <asp:Image ID="p1RightCard" runat="server" CssClass="tableCard"/>
     </div>
 
     <div id="Player1Area" class ="row fixed-height">
-        <div id="spaceHolderLeft" class ="columnEdge">spaceholderleft</div>
+        <div id="spaceHolderLeft" class ="columnEdge">&nbsp;</div>
         <div id="player1Info" class ="columnCenter">
             <h1>Player 1 Info</h1>
             <asp:Label ID="p1cardCountLabel" CssClass="cardCount" runat="server">Card count: </asp:Label><br />
