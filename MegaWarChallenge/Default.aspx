@@ -15,10 +15,7 @@
     <script type="text/javascript" src="//secure.gbcblue.com/common/fancybox/2.1.5/source/jquery.fancybox.js"></script>
     <script type="text/javascript" src="//secure.gbcblue.com/common/fancybox/2.1.5/source/jquery.fancybox.swipe.js"></script>
     <link rel="stylesheet" type="text/css" href="//secure.gbcblue.com/common/fancybox/2.1.5/source/jquery.fancybox.css" />
-    <script>
-
-        $('.tableCard').height = $('#player2deckImage').height(); //doesn't work
-    </script>
+    
     
 
 </head>
@@ -35,8 +32,13 @@
                 closeClick: true,
 
             })
-        })
 
+            //works for initial window size but is not dynamic...  ?
+            $(".tableCard").width($('#player2deckImage').width());
+        })
+        
+
+       
     </script>
 <body>
     <form id="form1" runat="server">
