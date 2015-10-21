@@ -18,6 +18,12 @@
     max-width:120px;
 }
 
+#cardArea{
+    display:inline-block;
+    border-style:solid;
+    border-color:black;
+}
+
 .columnEdge#player1deckImage{
     float:right;
 }
@@ -59,7 +65,7 @@
 
 div#GameArea{
     border-color:black;
-    
+  
     border-style:solid;
 }
 
@@ -87,11 +93,22 @@ div#GameArea{
     padding-left:40px;
     padding-right:40px;
     line-height: 22px;
-    /*display:inline-block;*/
-    /*float:left;*/
+    display:inline-block;
+    float:left;
     
 }
-
-#spaceHolderLeft{
-    min-width:
+#leftInfoPane{
+    float:left;
+    max-width:150px;
+    border:2px solid black;
+    display:inline-block;
+    border-color:black;
+    border-style:solid;
+}
+#rightInfoPane{
+    float:right;
+    max-width:150px;
+    border:2px solid black;
+    display:inline-block;
+    border-style:solid;
 }

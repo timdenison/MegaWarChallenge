@@ -33,8 +33,11 @@
 
             })
 
-            //works for initial window size but is not dynamic...  ?
-            $(".tableCard").width($('#player2deckImage').width());
+            //works for initial window size but is not dynamic...
+            $(".tableCard").width($('#player2deckImage').width())
+            //so let's also put it in the resize listener
+            $(window).resize(function(){$(".tableCard").width($('#player2deckImage').width())});
+            
         })
         
 
@@ -61,12 +64,18 @@
     </div>
 
     <div id="battleground" class ="row" style="text-align:center">&nbsp;
-    <asp:Label ID="unshuffledLabel" runat="server" CssClass="elbow-room"></asp:Label>
+        <div id="leftInfoPane">This is the left info pane.
+            <asp:Label ID="unshuffledLabel" runat="server" CssClass="elbow-room"></asp:Label>
+            <asp:Label ID="resultsLabel" runat="server" CssClass="elbow-room"></asp:Label>
+
+        </div>
+    
        
         <%--<asp:Button ID="warButton" runat="server" Text="Auto-Play" CssClass="elbow-room" OnClick="warButton_Click" />--%>
-        <asp:Label ID="resultsLabel" runat="server" CssClass="elbow-room"></asp:Label>
+        
         <br />
         <br />
+        <div id="cardArea">
         <asp:Image ID="p2leftCard" runat="server" CssClass="tableCard" />
         <asp:Image ID="p2MainCard" runat="server" CssClass="tableCard" />
         <asp:Image ID="p2RightCard" runat="server" CssClass="tableCard"/>
@@ -74,6 +83,9 @@
         <asp:Image ID="p1LeftCard" runat="server" CssClass="tableCard"/>
         <asp:Image ID="p1MainCard" runat="server" CssClass="tableCard"/>
         <asp:Image ID="p1RightCard" runat="server" CssClass="tableCard"/>
+            </div>
+
+        <div id="rightInfoPane">This is the right info pane.</div>
     </div>
 
     <div id="Player1Area" class ="row fixed-height">
