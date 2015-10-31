@@ -104,11 +104,20 @@ div#GameArea{
     display:inline-block;
     border-color:black;
     border-style:solid;
+    min-height:200px;
+    max-height:200px;
 }
 #rightInfoPane{
     float:right;
     max-width:150px;
+    min-width:150px;
     border:2px solid black;
     display:inline-block;
     border-style:solid;
+    min-height:200px;
+}
+.button{
+    margin: 0 auto;
+    left: 30%;
+    position:relative;
 }

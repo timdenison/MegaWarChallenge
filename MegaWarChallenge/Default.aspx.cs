@@ -30,10 +30,12 @@ namespace MegaWarChallenge
             Random random = new Random();
             
             deck.Shuffle(random);
+            var roundCount = 0;
             
             deck.Deal(Player1, Player2);
             Session.Add("Player1", Player1);
             Session.Add("Player2", Player2);
+            Session.Add("roundCount", roundCount);
             DrawBoard(game);
 
             //PrintPlayerCards(Player1, Player2);
@@ -46,9 +48,7 @@ namespace MegaWarChallenge
             player1deckImage.ImageUrl = "Cards//playingCardBack.jpg";
             p1cardCountLabel.Text = "26";
             p2cardCountLabel.Text = "26";
-            
-
-           
+   
         }
 
         private void PrintPlayerCards(Player Player1, Player Player2)
@@ -130,12 +130,14 @@ namespace MegaWarChallenge
             bool gameOver = false;
             var Player1 = (Player)Session["Player1"];
             var Player2 = (Player)Session["Player2"];
+            var roundCount = (Int32)Session["roundCount"];
             try {
                 Player1.ThrowCard(warPile);
                 Player2.ThrowCard(warPile);
                 p1MainCard.ImageUrl = warPile[0].relPath;
                 p2MainCard.ImageUrl = warPile[1].relPath;
                 Compare(warPile, Player1, Player2);
+                Session["roundCount"] = roundCount++;
                 return gameOver;
             }
             catch
@@ -172,11 +174,16 @@ namespace MegaWarChallenge
 
         private void PrintRoundResults(Player player, List<Card> warPile)
         {
-            resultsLabel.Text += player.name + " wins!";
-            //foreach (var card in warPile)
-            //{
-            //    resultsLabel.Text += "   " + card.name + "<br />";
-            //}
+            resultsLabel.Text = player.name + " wins the";
+            
+            foreach (var card in warPile)
+            {
+                resultsLabel.Text += " " + card.name;
+                if (card != warPile[(warPile.Count - 1)])
+                {
+                    resultsLabel.Text += "<br />and <br />";
+                }
+            }
             var winnerCardCount = player.hand.Count + warPile.Count;
             //resultsLabel.Text += "Card count (" + player.name + "): " + winnerCardCount + "<br />";
             if (player.name == "Player 1")
