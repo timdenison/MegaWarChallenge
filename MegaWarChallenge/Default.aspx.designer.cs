@@ -58,13 +58,13 @@ namespace MegaWarChallenge {
         protected global::System.Web.UI.WebControls.Label resultsLabel;
         
         /// <summary>
-        /// p2leftCard control.
+        /// p2LeftCard control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Image p2leftCard;
+        protected global::System.Web.UI.WebControls.Image p2LeftCard;
         
         /// <summary>
         /// p2MainCard control.
@@ -110,6 +110,15 @@ namespace MegaWarChallenge {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Image p1RightCard;
+        
+        /// <summary>
+        /// rightInfoPane control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl rightInfoPane;
         
         /// <summary>
         /// p1cardCountLabel control.

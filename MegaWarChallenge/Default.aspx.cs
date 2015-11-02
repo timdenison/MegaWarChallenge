@@ -17,6 +17,7 @@ namespace MegaWarChallenge
         List<Card> warPile = game.WarPile;
         Player Player1 = game.Player1;
         Player Player2 = game.Player2;
+        int roundCount = 0;
         
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,7 +31,6 @@ namespace MegaWarChallenge
             Random random = new Random();
             
             deck.Shuffle(random);
-            var roundCount = 0;
             
             deck.Deal(Player1, Player2);
             Session.Add("Player1", Player1);
@@ -127,17 +127,19 @@ namespace MegaWarChallenge
 
         private bool PlayRound()
         {
+            ClearCards();
             bool gameOver = false;
             var Player1 = (Player)Session["Player1"];
             var Player2 = (Player)Session["Player2"];
-            var roundCount = (Int32)Session["roundCount"];
+            var roundCount = (int)Session["roundCount"];
             try {
                 Player1.ThrowCard(warPile);
                 Player2.ThrowCard(warPile);
                 p1MainCard.ImageUrl = warPile[0].relPath;
                 p2MainCard.ImageUrl = warPile[1].relPath;
                 Compare(warPile, Player1, Player2);
-                Session["roundCount"] = roundCount++;
+                Session["roundCount"] = ((int)Session["roundCount"] + 1);
+                rightInfoPane.InnerHtml = "Rounds played: " + Session["roundCount"];
                 return gameOver;
             }
             catch
@@ -148,6 +150,16 @@ namespace MegaWarChallenge
             }
 
             
+        }
+
+        private void ClearCards()
+        {
+            p1LeftCard.ImageUrl = "";
+            p1MainCard.ImageUrl = "";
+            p1RightCard.ImageUrl = "";
+            p2LeftCard.ImageUrl = "";
+            p2MainCard.ImageUrl = "";
+            p2RightCard.ImageUrl = "";
         }
 
         private void Compare(List<Card> warPile, Player player1, Player player2)
@@ -195,13 +207,13 @@ namespace MegaWarChallenge
             {
                 p2cardCountLabel.Text = winnerCardCount.ToString();
                 p1cardCountLabel.Text = (52 - winnerCardCount).ToString();
-            }
-
-            
+            }        
         }
 
         public void War(Player player1, Player player2)
         { //test war code. Show cards. Create Auto Play loop
+            p1LeftCard.ImageUrl = p1MainCard.ImageUrl;
+            p2LeftCard.ImageUrl = p2MainCard.ImageUrl;
             int counter = 2;
             bool facedown = true;
             while (counter > 0)
@@ -210,6 +222,16 @@ namespace MegaWarChallenge
                     player1.ThrowCard(warPile, facedown);
                     player2.ThrowCard(warPile, facedown);
                     facedown = !facedown;
+                    if(counter==2)
+                    {
+                        p1MainCard.ImageUrl = warPile[2].relPath;
+                        p2MainCard.ImageUrl = warPile[3].relPath;
+                    }
+                    else
+                    {
+                        p1RightCard.ImageUrl = warPile[4].relPath;
+                        p2RightCard.ImageUrl = warPile[5].relPath;
+                    }
                     counter--;
                     
                 }
@@ -311,6 +333,7 @@ namespace MegaWarChallenge
         {
             warPile.Add(player.hand[0]);
             player.hand.RemoveAt(0);
+           
         }
         
     }

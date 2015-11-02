@@ -20,8 +20,6 @@
 
 #cardArea{
     display:inline-block;
-    border-style:solid;
-    border-color:black;
 }
 
 .columnEdge#player1deckImage{
@@ -42,10 +40,7 @@
 }
 
 #battleground{
-    
-    border-style: none;
-    border-color: inherit;
-    border-width: thick;
+   
     max-height: 100%;
     overflow:auto;
     /*margin:5px;*/
@@ -100,10 +95,10 @@ div#GameArea{
 #leftInfoPane{
     float:left;
     max-width:150px;
-    border:2px solid black;
+    /*border:2px solid black;*/
     display:inline-block;
-    border-color:black;
-    border-style:solid;
+    /*border-color:black;
+    border-style:solid;*/
     min-height:200px;
     max-height:200px;
 }
@@ -111,9 +106,9 @@ div#GameArea{
     float:right;
     max-width:150px;
     min-width:150px;
-    border:2px solid black;
+    /*border:2px solid black;*/
     display:inline-block;
-    border-style:solid;
+    /*border-style:solid;*/
     min-height:200px;
 }
 .button{

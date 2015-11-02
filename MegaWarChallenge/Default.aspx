@@ -75,7 +75,7 @@
         
         
         <div id="cardArea">
-        <asp:Image ID="p2leftCard" runat="server" CssClass="tableCard" />
+        <asp:Image ID="p2LeftCard" runat="server" CssClass="tableCard" />
         <asp:Image ID="p2MainCard" runat="server" CssClass="tableCard" />
         <asp:Image ID="p2RightCard" runat="server" CssClass="tableCard"/>
         <br />
@@ -84,7 +84,7 @@
         <asp:Image ID="p1RightCard" runat="server" CssClass="tableCard"/>
             </div>
 
-        <div id="rightInfoPane">&nbsp;</div>
+        <div id="rightInfoPane" runat="server">&nbsp;</div>
     </div>
 
     <div id="Player1Area" class ="row fixed-height">
