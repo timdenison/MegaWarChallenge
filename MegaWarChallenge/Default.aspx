@@ -33,23 +33,26 @@
 
             })
 
-            //works for initial window size but is not dynamic...
+            //works for initial window size but is not dynamic...(or is it?)
             $(".tableCard").width($('#player2deckImage').width())
             //so let's also put it in the resize listener
-            $(window).resize(function(){$(".tableCard").width($('#player2deckImage').width())});
+            $(window).resize(function () { $(".tableCard").width($('#player2deckImage').width()) });
             
         })
         
+        function Trigger() {
+            $("#welcomePopUplink").trigger("click");
+        }
 
        
     </script>
 <body>
     <form id="form1" runat="server">
-        <a id="welcomePopUplink" class="fancyboxLink" href="#welcomePopUp"></a>
+        <a id="welcomePopUplink" class="fancyboxLink" href="#welcomePopUp" runat="server"></a>
 
     <div id="GameArea" class="container">
         <div id="welcomePopUp" style="display:none;">
-            <div id="welcomPopUpText">Here's a FancyBox Popup?</div>
+            <div id="welcomPopUpText">Let's Play a Game of War</div>
         </div>
     <div id="Player2Area" class="row fixed-height">
     

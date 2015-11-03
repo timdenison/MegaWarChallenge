@@ -7,6 +7,7 @@ using System.Web.UI.WebControls;
 using System.Text;
 using System.Globalization;
 using System.IO;
+using System.Web.UI.HtmlControls;
 
 namespace MegaWarChallenge
 {
@@ -21,7 +22,17 @@ namespace MegaWarChallenge
         
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack) { PlayWar(); }
+            if (!Page.IsPostBack) {
+                //This works
+                Page.ClientScript.RegisterStartupScript(GetType(), "hiya", "alert('hi!')", true);
+
+                //why won't this?
+                /*ScriptManager.RegisterStartupScript(this.Page, typeof(Page), "welcome", "Trigger()", true)*/;
+
+                //ClientScriptManager cs = Page.ClientScript;
+                //cs.RegisterStartupScript(GetType(), "welcome", "alert('Welcome!')", true);
+                PlayWar();
+            }
             
         }
 
